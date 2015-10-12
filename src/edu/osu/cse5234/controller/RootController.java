@@ -16,4 +16,9 @@ public class RootController {
 		return "home";
 	}
 	
+	@RequestMapping(path = "AboutUs", method = RequestMethod.GET)
+	public String viewAboutUS(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "AboutUs";
+	}
+	
 }

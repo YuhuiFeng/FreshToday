@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<ul id="menu">
-		<li><a href="/FreshToday/AboutUs"> ABOUT US</a></li>
-		<li><a href="/FreshToday/purchase">PURCHASE</a></li>
-	</ul>
+	<h1> Welcome to FreshToday!</h1>
 </body>
 </html>

@@ -43,5 +43,6 @@
 	
 	<input type="submit" value="Make a playment >>" />
 </form:form>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

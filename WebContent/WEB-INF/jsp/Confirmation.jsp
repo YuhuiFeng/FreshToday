@@ -13,5 +13,6 @@
 	</font>
 	<br />
 	Thanks for shopping at FreshToday, your fresh fruit supporter!
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

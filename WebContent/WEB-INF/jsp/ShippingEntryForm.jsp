@@ -21,5 +21,6 @@
 	
 	<input type="submit" value="Submit Order" />
 </form:form>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

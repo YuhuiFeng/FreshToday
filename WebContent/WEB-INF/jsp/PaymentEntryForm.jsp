@@ -19,5 +19,6 @@
 	
 	<input type="submit" value="Next" />
 </form:form>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

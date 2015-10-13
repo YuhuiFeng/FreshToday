@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 <body>
-	<p> @All rights reserved 2015 </p>
+	<p class="footer"> @All rights reserved 2015 </p>
 </body>
 </html>

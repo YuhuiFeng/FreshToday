@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 <body>
 	<h1> Welcome to FreshToday!</h1>

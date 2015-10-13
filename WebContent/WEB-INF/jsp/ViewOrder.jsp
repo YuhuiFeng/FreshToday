@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Order Page</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
-<body>
+<body class="body">
 <form:form method="post" action="ConfirmOrder">
 	<%@ page import="java.util.List" %>
 	<%@ page import="edu.osu.cse5234.controller.Item" %>

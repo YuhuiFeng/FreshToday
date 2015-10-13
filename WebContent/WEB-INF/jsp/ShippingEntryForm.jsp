@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Shipping info page</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 <body>
 <h2>Please enter your shipping info:</h2>

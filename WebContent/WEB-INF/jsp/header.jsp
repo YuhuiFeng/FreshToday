@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Header of homepage</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 <body>
-	<ul id="menu">
-		<li><a href="/FreshToday/AboutUs"> ABOUT US</a></li>
+	<ul class="header" id="menu">
 		<li><a href="/FreshToday/purchase">PURCHASE</a></li>
+		<li><a href="/FreshToday/AboutUs"> ABOUT US</a></li>
 	</ul>
 </body>
 </html>

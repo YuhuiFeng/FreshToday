@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Payment Info Page</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 <body>
 <h2>Please enter your payment info:</h2>

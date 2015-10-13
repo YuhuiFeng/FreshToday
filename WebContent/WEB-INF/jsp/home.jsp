@@ -5,14 +5,15 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Fresh Today Homepage</title>
+<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
 </head>
 
-<body>
-	<h1> FreshToday</h1>
-	<h2> Vision & Mission</h2>
-	<h3> Strategy </h3>
+<body class="body">
 	<jsp:include page="header.jsp"/>
+	<h1> FreshToday</h1>
+	<h2> Vision and Mission</h2>
+	<h3> Strategy </h3>
 	<p> We sell orange, apple, and ... </p>
 	<jsp:include page="footer.jsp"/>	
 </body>

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Order Entry Form</title>
-<link rel="stylesheet" href="../css/mystyle.css" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
 <h2>Welcome to FreshToday! Health everyday!</h2>

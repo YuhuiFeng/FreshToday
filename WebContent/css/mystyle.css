@@ -54,6 +54,7 @@ p {
 table {
 	width: 80%;
 	margin-top: 20px;
+	padding: 15px;
 }
 
 td, td.center-col {
@@ -70,6 +71,7 @@ td.right-col {
 }
 
 th {
+	background-color: green;
 	color: #424242;
 	border: 1pt solid #808080;
 }

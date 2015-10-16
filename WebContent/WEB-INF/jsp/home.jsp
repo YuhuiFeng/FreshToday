@@ -15,7 +15,11 @@
 	<h1> FreshToday</h1>
 	<h2> Vision and Mission</h2>
 	<h3> Strategy </h3>
-	<p> We sell orange, apple, and ... </p>
+	<img class="img" src="<c:url value='/images/apple.jpg' />" alt="APPLE" style="width:580px; height:334px" />
+	<p class="p"> We sell orange, apple, and ... </p>
+    <a class="a" href="/FreshToday/purchase">START_PURCHASE</a> 
+
 	<jsp:include page="footer.jsp"/>	
+	
 </body>
 </html>

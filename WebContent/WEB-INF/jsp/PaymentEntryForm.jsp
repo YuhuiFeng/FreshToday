@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <h2>Please enter your payment info:</h2>
 <form:form modelAttribute="payment" method="post" action="submitPayment">
 	Credit card holder: <form:input path = "cardHolder" type = "text"/><br />

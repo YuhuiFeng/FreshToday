@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
+    <jsp:include page="header.jsp"/>
 	<font color="green" size="5">
 	Congratulations! You have set your fruit order. You will received your fresh fruit tomorrow!<br />
 	</font>

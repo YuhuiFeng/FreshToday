@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body class="body">
+<jsp:include page="header.jsp"/>
 <form:form method="post" action="ConfirmOrder">
 	<%@ page import="java.util.List" %>
 	<%@ page import="edu.osu.cse5234.controller.Item" %>

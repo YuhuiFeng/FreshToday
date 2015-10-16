@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<h1> Welcome to FreshToday!</h1>
 	<h2> Your Fresh Fruit Supporters</h2>
 	<img src="<c:url value='/images/Yuhui.jpg' />" alt="CEO Photot" style="width:128px; height:128px" />

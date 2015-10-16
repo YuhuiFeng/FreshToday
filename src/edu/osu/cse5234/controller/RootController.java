@@ -20,4 +20,6 @@ public class RootController {
 	public String viewAboutUS(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "AboutUs";
 	}
+	
+	
 }

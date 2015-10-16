@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <h2>Please enter your shipping info:</h2>
 <form:form modelAttribute="shipping" method="post" action="submitShipping">
 	Name : <form:input path = "name" /><br />

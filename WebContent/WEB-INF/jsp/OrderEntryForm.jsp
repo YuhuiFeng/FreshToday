@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <h2>Welcome to FreshToday! Health everyday!</h2>
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
 	<table>

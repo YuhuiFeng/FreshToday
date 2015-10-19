@@ -1,5 +1,9 @@
 package edu.osu.cse5234.controller;
 
+import edu.osu.cse5234.business.InventoryManagementServiceBean;
+import edu.osu.cse5234.business.Inventory;
+import edu.osu.cse5234.business.Item;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,22 +15,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/purchase")
 public class Purchase {
-	private static final String[] FRUITS = {"apple", "orange", "peach", "pear", "grape"};
+	
+	private void inventoryToOrder(Order order, Inventory inventory){
+		for(int i=0; i<inventory.size(); i++){
+			Item tmpItem = inventory.get(i);
+			if(Integer.parseInt(tmpItem.getQuantity())>0){
+				tmpItem.setQuantity("0");
+				order.add(tmpItem);
+			}
+		}
+	}
+	
+	private void filterOrder(Order order){
+		System.out.println(order.getOrder().size());
+		for(int i=0; i<order.getOrder().size(); i++){
+			if(Integer.parseInt(order.get(i).getQuantity())<=0){
+				System.out.println(order.get(i).getQuantity());
+				order.remove(i);
+			}
+		}
+	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
-		for (int i = 0; i < FRUITS.length; i++) {
-			order.add(new Item(FRUITS[i], "0"));
-		}
+		InventoryManagementServiceBean inventoryManagementService = new InventoryManagementServiceBean();
+		Inventory inventory = inventoryManagementService.getAvailableItems();
+		inventoryToOrder(order, inventory);
 		request.setAttribute("order", order);
 		System.out.print("1");
 		return "OrderEntryForm";
 	}
 	
-	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
+		filterOrder(order);
+		System.out.println(order.getOrder().size());
 		request.getSession().setAttribute("order", order);
 		System.out.print("2");
 		return "redirect:/purchase/paymentEntry";

@@ -13,7 +13,7 @@
 <jsp:include page="header.jsp"/>
 <form:form method="post" action="ConfirmOrder">
 	<%@ page import="java.util.List" %>
-	<%@ page import="edu.osu.cse5234.controller.Item" %>
+	<%@ page import="edu.osu.cse5234.business.Item" %>
 	<%@ page import="edu.osu.cse5234.controller.Order" %>
 	<%@ page import="edu.osu.cse5234.controller.PaymentInfo" %>
 	<%@ page import="edu.osu.cse5234.controller.ShippingInfo" %>

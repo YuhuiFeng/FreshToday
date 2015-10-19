@@ -19,26 +19,12 @@
 			<th>Fruit</th>
 			<th>Quantity</th>
 		</tr>
-		<tr>
-			<td> <form:hidden path="items[0].name" />${order.items[0].name} </td>
-	    	<td> <form:input path="items[0].quantity" /> </td>
-    	</tr>
-    	<tr>
-			<td> <form:hidden path="items[1].name" />${order.items[1].name} </td>
-	    	<td> <form:input path="items[1].quantity" /> </td>
-    	</tr>
-    	<tr>
-			<td> <form:hidden path="items[2].name" />${order.items[2].name} </td>
-	    	<td> <form:input path="items[2].quantity" /> </td>
-    	</tr>
-    	<tr>
-			<td> <form:hidden path="items[3].name" />${order.items[3].name} </td>
-	    	<td> <form:input path="items[3].quantity" /> </td>
-    	</tr>
-    	<tr>
-			<td> <form:hidden path="items[4].name" />${order.items[4].name} </td>
-	    	<td> <form:input path="items[4].quantity" /> </td>
-    	</tr>
+		<c:forEach var="i" begin="0" end="4">
+			<tr>
+				<td> <form:hidden path="items[${i}].name" />${order.items[i].name} </td>
+	    		<td> <form:input path="items[${i}].quantity" /> </td>
+    		</tr>
+    	</c:forEach>
 
 	</table><br />
 	

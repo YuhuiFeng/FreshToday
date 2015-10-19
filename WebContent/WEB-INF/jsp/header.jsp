@@ -12,6 +12,7 @@
 	<ul class="header" id="menu">
 		<li><a href="/FreshToday/">HOME PAGE</a></li>
 		<li><a href="/FreshToday/AboutUs"> ABOUT US</a></li>
+		<li><a class="a" href="/FreshToday/purchase">PURCHASE</a></li> 
 	</ul>
 </body>
 </html>

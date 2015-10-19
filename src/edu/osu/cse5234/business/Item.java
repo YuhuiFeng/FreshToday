@@ -1,4 +1,4 @@
-package edu.osu.cse5234.controller;
+package edu.osu.cse5234.business;
 
 public class Item {
 	private String name;

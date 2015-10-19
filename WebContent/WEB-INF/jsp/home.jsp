@@ -17,7 +17,7 @@
 	<h3> Strategy </h3>
 	<img class="img" src="<c:url value='/images/apple.jpg' />" alt="APPLE" style="width:580px; height:334px" />
 	<p class="p"> We sell orange, apple, and ... </p>
-    <a class="a" href="/FreshToday/purchase">START_PURCHASE</a> 
+    <a class="a" href="/FreshToday/purchase">START PURCHASE</a> 
 
 	<jsp:include page="footer.jsp"/>	
 	

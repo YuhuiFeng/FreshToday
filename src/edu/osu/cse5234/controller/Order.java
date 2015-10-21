@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Order {
 	private List<Item> items;	
-	private int size;
 	
 	public List<Item> getItems() {
 		return items;
@@ -19,7 +18,6 @@ public class Order {
 
 	public Order() {
 		items = new ArrayList<>();
-		this.size = 0;
 	}
 
 	public List<Item> getOrder() {
@@ -28,12 +26,10 @@ public class Order {
 
 	public void setOrder(List<Item> order) {
 		this.items = order;
-		this.size = items.size();
 	}
 	
 	public void add(Item item) {
 		this.items.add(item);
-		this.size++;
 	}
 	
 	public Item get(int i){
@@ -42,11 +38,10 @@ public class Order {
 	
 	public void remove(int i){
 		items.remove(i);
-		this.size--;
 	}
 	
 	public int size(){
-		return this.size;
+		return items.size();
 	}
 }
 

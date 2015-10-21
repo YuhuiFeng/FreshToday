@@ -5,11 +5,9 @@ import java.util.List;
 
 public class Inventory {
 	private List<Item> items;	
-	private int size;
 	
 	private Inventory() {
-		items = new ArrayList<>();
-		size = 0;
+		items = new ArrayList<Item>();
 	}
 	
 	private static Inventory instance = new Inventory();
@@ -24,7 +22,6 @@ public class Inventory {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
-		this.size = items.size();
 	}
 
 	public List<Item> getInventory() {
@@ -37,7 +34,6 @@ public class Inventory {
 	
 	public void add(Item item) {
 		this.items.add(item);
-		this.size++;
 	}
 	
 	public Item get(int i){
@@ -45,6 +41,6 @@ public class Inventory {
 	}
 	
 	public int size(){
-		return this.size;
+		return items.size();
 	}
 }

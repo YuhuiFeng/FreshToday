@@ -6,6 +6,7 @@ import edu.osu.cse5234.business.Item;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,21 +19,21 @@ public class Purchase {
 	
 	private void inventoryToOrder(Order order, Inventory inventory){
 		for(int i=0; i<inventory.size(); i++){
-			Item tmpItem = inventory.get(i);
-			if(Integer.parseInt(tmpItem.getQuantity())>0){
-				tmpItem.setQuantity("0");
-				order.add(tmpItem);
+			Item inventoryItem = inventory.get(i);
+			if(Integer.parseInt(inventoryItem.getQuantity())>0){
+				Item orderItem = new Item(inventoryItem.getName(), "0");
+				order.add(orderItem);
 			}
 		}
 	}
 	
 	private void filterOrder(Order order){
-		System.out.println(order.getOrder().size());
-		for(int i=0; i<order.getOrder().size(); i++){
-			if(Integer.parseInt(order.get(i).getQuantity())<=0){
-				System.out.println(order.get(i).getQuantity());
-				order.remove(i);
-			}
+		int tmp =0;
+		int total = order.size();
+		for(int i=0; i<total; i++){
+			if(Integer.parseInt(order.get(tmp).getQuantity())<=0)
+				order.remove(tmp);
+			else tmp++;
 		}
 	}
 	
@@ -47,10 +48,12 @@ public class Purchase {
 		return "OrderEntryForm";
 	}
 	
+	// Issue: the quantity of an item may exceed the inventory.
+	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
 		filterOrder(order);
-		System.out.println(order.getOrder().size());
+		System.out.println("After filtering is "+ order.getOrder().size());
 		request.getSession().setAttribute("order", order);
 		System.out.print("2");
 		return "redirect:/purchase/paymentEntry";
@@ -91,9 +94,30 @@ public class Purchase {
 		return "ViewOrder";
 	}
 	
+	private void updateInventory(Order order, Inventory inventory){
+		int start = 0;
+		for(int i =0; i<order.size(); i++){
+			Item orderItem = order.get(i);
+			for(int j =start; j< inventory.size(); j++){
+				Item inventoryItem = inventory.get(j);
+				if(orderItem.getName().equals(inventoryItem.getName())){
+					int tmpQuantity = Integer.parseInt(inventoryItem.getQuantity()) - Integer.parseInt(orderItem.getQuantity());
+					inventoryItem.setQuantity(Integer.toString(tmpQuantity));
+					System.out.println("Updated Invenytory item " + inventoryItem.getName() + " is " + inventoryItem.getQuantity());
+					start = j+1;
+					break;
+				}
+			}
+		}
+	}
+	
 	@RequestMapping(path = "/ConfirmOrder", method = RequestMethod.POST)
 	public String viewConfirmOrderPage(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		System.out.print("8");
+		HttpSession session = request.getSession();
+		Order order = (Order) session.getAttribute("order");
+		System.out.println("order size is "+ order.size());
+		updateInventory(order, Inventory.getInstance());
 		return "Confirmation";
 	}
 }

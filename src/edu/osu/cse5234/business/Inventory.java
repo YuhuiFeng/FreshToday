@@ -6,8 +6,13 @@ import java.util.List;
 public class Inventory {
 	private List<Item> items;	
 	
+	private static final String[] FRUITS = {"apple", "orange", "peach", "pear", "lemonade"};
+	
 	private Inventory() {
 		items = new ArrayList<Item>();
+		for (int i = 0; i < FRUITS.length; i++) {
+			items.add(new Item(FRUITS[i], "100"));
+		}
 	}
 	
 	private static Inventory instance = new Inventory();

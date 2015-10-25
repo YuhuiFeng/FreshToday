@@ -1,8 +1,10 @@
 package edu.osu.cse5234.controller;
 
-import edu.osu.cse5234.business.InventoryManagementServiceBean;
-import edu.osu.cse5234.business.Inventory;
-import edu.osu.cse5234.business.Item;
+import edu.osu.cse5234.business.OrderProcessingServiceBean;
+import edu.osu.cse5234.business.view.Inventory;
+import edu.osu.cse5234.business.view.InventoryService;
+import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.util.ServiceLocator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,8 +42,10 @@ public class Purchase {
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
-		InventoryManagementServiceBean inventoryManagementService = new InventoryManagementServiceBean();
-		Inventory inventory = inventoryManagementService.getAvailableItems();
+		//InventoryManagementServiceBean inventoryManagementService = new InventoryManagementServiceBean();
+		//Inventory inventory = inventoryManagementService.getAvailableItems();
+		InventoryService is = ServiceLocator.getInventoryService();
+		Inventory inventory = is.getAvailableInventory();
 		inventoryToOrder(order, inventory);
 		request.setAttribute("order", order);
 		System.out.print("1");
@@ -56,7 +60,13 @@ public class Purchase {
 		System.out.println("After filtering is "+ order.getOrder().size());
 		request.getSession().setAttribute("order", order);
 		System.out.print("2");
-		return "redirect:/purchase/paymentEntry";
+		OrderProcessingServiceBean opsb = ServiceLocator.getOrderProcessingService();
+		if (opsb.validateItemAvailability(order)) {
+			return "redirect:/purchase/paymentEntry";
+		} else {
+			// alert user error message "resubmit item quantities"
+			return "OrderEntryForm";
+		}
 	}
 	
 	@RequestMapping(path = "/paymentEntry", method = RequestMethod.GET)
@@ -118,6 +128,9 @@ public class Purchase {
 		Order order = (Order) session.getAttribute("order");
 		System.out.println("order size is "+ order.size());
 		updateInventory(order, Inventory.getInstance());
+		OrderProcessingServiceBean opsb = ServiceLocator.getOrderProcessingService();
+		String confirmCode = opsb.processOrder(order);
+		request.setAttribute("confirmCode", confirmCode);
 		return "Confirmation";
 	}
 }

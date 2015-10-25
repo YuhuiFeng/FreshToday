@@ -3,6 +3,7 @@
 	<name>FreshToday</name>
 	<comment></comment>
 	<projects>
+		<project>FreshToday-EJBClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

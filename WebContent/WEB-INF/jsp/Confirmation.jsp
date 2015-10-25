@@ -14,6 +14,7 @@
 	Congratulations! You have set your fruit order. You will received your fresh fruit tomorrow!<br />
 	</font>
 	<br />
+	Your confirmation code is <%=request.getAttribute("confirmCode").toString() %>
 	Thanks for shopping at FreshToday, your fresh fruit supporter!
 	<jsp:include page="footer.jsp"/>
 </body>

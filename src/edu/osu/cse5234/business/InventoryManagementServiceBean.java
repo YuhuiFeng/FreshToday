@@ -1,5 +1,7 @@
 package edu.osu.cse5234.business;
 
+import edu.osu.cse5234.business.view.Inventory;
+
 public class InventoryManagementServiceBean {
 	
 	public Inventory inventoryInstance = null;

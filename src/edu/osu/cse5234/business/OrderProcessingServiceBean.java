@@ -1,7 +1,6 @@
 package edu.osu.cse5234.business;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 import edu.osu.cse5234.business.view.InventoryService;

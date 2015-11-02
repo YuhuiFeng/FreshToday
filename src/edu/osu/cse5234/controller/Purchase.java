@@ -23,7 +23,8 @@ public class Purchase {
 		for(int i=0; i<inventory.size(); i++){
 			Item inventoryItem = inventory.get(i);
 			if(Integer.parseInt(inventoryItem.getQuantity())>0){
-				Item orderItem = new Item(inventoryItem.getName(), "0");
+				Item orderItem = new Item(inventoryItem.getId(), inventoryItem.getName(), 
+						inventoryItem.getDescription(), "0", inventoryItem.getUnitPrice());
 				order.add(orderItem);
 			}
 		}
@@ -104,22 +105,22 @@ public class Purchase {
 		return "ViewOrder";
 	}
 	
-	private void updateInventory(Order order, Inventory inventory){
-		int start = 0;
-		for(int i =0; i<order.size(); i++){
-			Item orderItem = order.get(i);
-			for(int j =start; j< inventory.size(); j++){
-				Item inventoryItem = inventory.get(j);
-				if(orderItem.getName().equals(inventoryItem.getName())){
-					int tmpQuantity = Integer.parseInt(inventoryItem.getQuantity()) - Integer.parseInt(orderItem.getQuantity());
-					inventoryItem.setQuantity(Integer.toString(tmpQuantity));
-					System.out.println("Updated Invenytory item " + inventoryItem.getName() + " is " + inventoryItem.getQuantity());
-					start = j+1;
-					break;
-				}
-			}
-		}
-	}
+//	private void updateInventory(Order order, Inventory inventory){
+//		int start = 0;
+//		for(int i =0; i<order.size(); i++){
+//			Item orderItem = order.get(i);
+//			for(int j =start; j< inventory.size(); j++){
+//				Item inventoryItem = inventory.get(j);
+//				if(orderItem.getName().equals(inventoryItem.getName())){
+//					int tmpQuantity = Integer.parseInt(inventoryItem.getQuantity()) - Integer.parseInt(orderItem.getQuantity());
+//					inventoryItem.setQuantity(Integer.toString(tmpQuantity));
+//					System.out.println("Updated Invenytory item " + inventoryItem.getName() + " is " + inventoryItem.getQuantity());
+//					start = j+1;
+//					break;
+//				}
+//			}
+//		}
+//	}
 	
 	@RequestMapping(path = "/ConfirmOrder", method = RequestMethod.POST)
 	public String viewConfirmOrderPage(HttpServletRequest request, HttpServletResponse response)throws Exception {
@@ -127,7 +128,7 @@ public class Purchase {
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
 		System.out.println("order size is "+ order.size());
-		updateInventory(order, Inventory.getInstance());
+//		updateInventory(order, Inventory.getInstance());
 		OrderProcessingServiceBean opsb = ServiceLocator.getOrderProcessingService();
 		String confirmCode = opsb.processOrder(order);
 		request.setAttribute("confirmCode", confirmCode);

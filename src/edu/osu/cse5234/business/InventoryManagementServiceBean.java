@@ -6,9 +6,9 @@ public class InventoryManagementServiceBean {
 	
 	public Inventory inventoryInstance = null;
 	
-	public InventoryManagementServiceBean(){
-		this.inventoryInstance = Inventory.getInstance();
-	}
+//	public InventoryManagementServiceBean(){
+//		this.inventoryInstance = Inventory.getInstance();
+//	}
 	
 	public Inventory getAvailableItems(){
 		return inventoryInstance;

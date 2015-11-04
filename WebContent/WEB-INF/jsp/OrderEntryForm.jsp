@@ -16,12 +16,18 @@
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
 	<table>
 		<tr>
+			<th>ID</th>
 			<th>Fruit</th>
+			<th>Description</th>
+			<th>Price</th>
 			<th>Quantity</th>
 		</tr>
 		<c:forEach var="i" begin="0" end="4">
 			<tr>
+				<td> <form:hidden path="items[${i}].id" /> ${order.items[i].id} </td>
 				<td> <form:hidden path="items[${i}].name" />${order.items[i].name} </td>
+				<td> <form:hidden path="items[${i}].description" /> ${order.items[i].description} </td>
+				<td> <form:hidden path="items[${i}].unitPrice" /> ${order.items[i].unitPrice} </td>
 	    		<td> <form:input path="items[${i}].quantity" /> </td>
     		</tr>
     	</c:forEach>

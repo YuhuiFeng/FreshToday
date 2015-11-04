@@ -24,7 +24,7 @@ public class Purchase {
 			Item inventoryItem = inventory.get(i);
 			if(Integer.parseInt(inventoryItem.getQuantity())>0){
 				Item orderItem = new Item(inventoryItem.getId(), inventoryItem.getName(), 
-						inventoryItem.getDescription(), "0", inventoryItem.getUnitPrice());
+						inventoryItem.getDescription(), "0" , inventoryItem.getUnitPrice());
 				order.add(orderItem);
 			}
 		}
@@ -36,7 +36,7 @@ public class Purchase {
 		for(int i=0; i<total; i++){
 			if(Integer.parseInt(order.get(tmp).getQuantity())<=0)
 				order.remove(tmp);
-			else tmp++;
+			else tmp ++;
 		}
 	}
 	
@@ -57,12 +57,11 @@ public class Purchase {
 	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) throws Exception {
-		filterOrder(order);
-		System.out.println("After filtering is "+ order.getOrder().size());
 		request.getSession().setAttribute("order", order);
 		System.out.print("2");
 		OrderProcessingServiceBean opsb = ServiceLocator.getOrderProcessingService();
 		if (opsb.validateItemAvailability(order)) {
+			filterOrder(order);
 			return "redirect:/purchase/paymentEntry";
 		} else {
 			// alert user error message "resubmit item quantities"

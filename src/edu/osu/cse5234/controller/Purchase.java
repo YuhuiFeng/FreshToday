@@ -4,6 +4,10 @@ import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
+import edu.osu.cse5234.business.view.LineItem;
+import edu.osu.cse5234.business.view.Order;
+import edu.osu.cse5234.business.view.PaymentInfo;
+import edu.osu.cse5234.business.view.ShippingInfo;
 import edu.osu.cse5234.util.ServiceLocator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +27,10 @@ public class Purchase {
 		for(int i=0; i<inventory.size(); i++){
 			Item inventoryItem = inventory.get(i);
 			if(Integer.parseInt(inventoryItem.getQuantity())>0){
-				Item orderItem = new Item(inventoryItem.getId(), inventoryItem.getName(), 
-						inventoryItem.getDescription(), "0" , inventoryItem.getUnitPrice());
+				LineItem orderItem = new LineItem();
+				orderItem.setItemId(inventoryItem.getId());
+				orderItem.setItemName(inventoryItem.getName());
+				orderItem.setQuantity("0");
 				order.add(orderItem);
 			}
 		}
@@ -126,8 +132,13 @@ public class Purchase {
 		System.out.print("8");
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
+		PaymentInfo paymentInfo = (PaymentInfo) session.getAttribute("payment");
+		ShippingInfo shippingInfo = (ShippingInfo) session.getAttribute("shipping");
+			
+		order.setPaymentInfo(paymentInfo);
+		order.setShippingInfo(shippingInfo);
 		System.out.println("order size is "+ order.size());
-//		updateInventory(order, Inventory.getInstance());
+		
 		OrderProcessingServiceBean opsb = ServiceLocator.getOrderProcessingService();
 		String confirmCode = opsb.processOrder(order);
 		request.setAttribute("confirmCode", confirmCode);

@@ -6,36 +6,69 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>Order Entry Form</title>
-<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
+<style>
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+.margin {margin-bottom: 45px; }
+.bg-1 {
+	background-color: #1abc9c;
+	color: #ffffff;
+}
+.bg-3 {
+	background-color: #ffffff;
+	color: #555555;
+}
+.container-padding {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+</style>
 <body>
 <jsp:include page="header.jsp"/>
-<h2>Welcome to FreshToday! Health everyday!</h2>
+
+<div class="container-fluid bg-1 text-center container-padding">
+	<h3>Welcome to FreshToday!</h3>
+	<h2>Health everyday!</h2>
+</div>
+<br />
+
+<div class="container">
 <form:form modelAttribute="order" method="post" action="purchase/submitItems">
-	<table>
+	<table class="table table-striped">
+	  <thead>
 		<tr>
-			<th>ID</th>
+			<th>Item ID</th>
 			<th>Fruit</th>
-			<th>Description</th>
-			<th>Price</th>
 			<th>Quantity</th>
 		</tr>
+	  </thead>
 		<c:forEach var="i" begin="0" end="4">
 			<tr>
-				<td> <form:hidden path="items[${i}].id" /> ${order.items[i].id} </td>
-				<td> <form:hidden path="items[${i}].name" />${order.items[i].name} </td>
-				<td> <form:hidden path="items[${i}].description" /> ${order.items[i].description} </td>
-				<td> <form:hidden path="items[${i}].unitPrice" /> ${order.items[i].unitPrice} </td>
-	    		<td> <form:input path="items[${i}].quantity" /> </td>
+				<td> <form:hidden path="items[${i}].itemId" /> ${order.items[i].itemId} </td>
+				<td> <form:hidden path="items[${i}].itemName" />${order.items[i].itemName} </td>
+				<td> <form:input path="items[${i}].quantity" /> </td>
     		</tr>
     	</c:forEach>
 
 	</table><br />
 	
-	<input type="submit" value="Make a playment >>" />
+	<div class="container-fluid bg-3 text-center container-padding">
+		<input type="submit" class="btn btn-info btn-lg" value="Make a payment">
+	</div>
 </form:form>
+</div>
+
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

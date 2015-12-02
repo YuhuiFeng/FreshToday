@@ -5,44 +5,69 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>View Order Page</title>
-<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
-<body class="body">
+<style>
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+.margin {margin-bottom: 45px; }
+.bg-1 {
+	background-color: #1abc9c;
+	color: #ffffff;
+}
+.bg-3 {
+	background-color: #ffffff;
+	color: #555555;
+}
+.container-padding {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+</style>
+<body>
 <jsp:include page="header.jsp"/>
+<div class="container-fluid bg-1 text-center container-padding">
+	<h3>Here is your order information</h3>
+</div>
+
+<div class="container">
 <form:form method="post" action="ConfirmOrder">
 	<%@ page import="java.util.List" %>
-	<%@ page import="edu.osu.cse5234.business.view.Item" %>
-	<%@ page import="edu.osu.cse5234.controller.Order" %>
-	<%@ page import="edu.osu.cse5234.controller.PaymentInfo" %>
-	<%@ page import="edu.osu.cse5234.controller.ShippingInfo" %>
+	<%@ page import="edu.osu.cse5234.business.view.LineItem" %>
+	<%@ page import="edu.osu.cse5234.business.view.Order" %>
+	<%@ page import="edu.osu.cse5234.business.view.PaymentInfo" %>
+	<%@ page import="edu.osu.cse5234.business.view.ShippingInfo" %>
 	
-	<font color="green" size="5">
-	Order: 
-   	</font><br />
-   	<table>
+	<h2>Order:</h2>
+   	<table class="table table-striped">
    		<tr>
    			<th>Fruit</th>
    			<th>Quantity</th>
 		</tr>
 		<% 
 		Order order = (Order) session.getAttribute("order");
-		List<Item> list = order.getOrder();
+		List<LineItem> list = order.getOrder();
 		for(int i=0; i<list.size(); i++){ 
 	 	%>
 		<tr>
-			<td><%= list.get(i).getName() %></td>
+			<td><%= list.get(i).getItemName() %></td>
 			<td><%= list.get(i).getQuantity() %></td>
 		</tr>
 		<%} %>
 	</table><br />
 	
-	<font color="green" size="5">
-   	Payment Information:
-   	</font><br /> 
+	<h2>Payment Information:</h2>
    	<% PaymentInfo payment = (PaymentInfo) session.getAttribute("payment"); %>
-   	<table>
+   	<table class="table table-striped">
    		<tr>
    			<td>Card Holder:</td>
    			<td><%= payment.getCardHolder() %></td>
@@ -61,11 +86,9 @@
    		</tr>
    	</table><br />
 
-	<font color="green" size="5">
-   	Shipping Information:
-   	</font><br /> 
+	<h2>Shipping Information:</h2>
    	<% ShippingInfo shipping = (ShippingInfo) session.getAttribute("shipping"); %>
-   	<table>
+   	<table class="table table-striped">
    		<tr>
    			<td>Name:</td>
    			<td><%= shipping.getName() %></td>
@@ -91,9 +114,13 @@
    			<td><%= shipping.getZipCode() %></td>
    		</tr>
    	</table><br />
+   	
+	<div class="container-fluid bg-3 text-center container-padding">
+		<input type="submit" class="btn btn-info btn-lg" value="Confirmation">
+	</div>
 	
-	<input type="submit" value="Confirmation" />
 </form:form>
+</div>
 </body>
 </html>
 

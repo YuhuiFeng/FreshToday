@@ -5,10 +5,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
+<style>
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+p {
+	text-align: center;
+}
+</style>
 <body>
-	<p class="footer"> @All rights reserved 2015 </p>
+<footer class="container-fluid bg-4 text-center">
+  <p>@All rights reserved 2015</p>
+</footer>
 </body>
 </html>

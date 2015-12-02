@@ -6,20 +6,64 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>Fresh Today Homepage</title>
-<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
 </head>
 
-<body class="body">
-	<jsp:include page="header.jsp"/>
-	<h1> FreshToday</h1>
-	<h2> Vision and Mission</h2>
-	<h3> Strategy </h3>
-	<img class="img" src="<c:url value='/images/apple.jpg' />" alt="APPLE" style="width:580px; height:334px" />
-	<p class="p"> We sell orange, apple, and ... </p>
-    <a class="a" href="/FreshToday/purchase">START PURCHASE</a> 
+<style>
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+.margin {margin-bottom: 45px; }
+p {
+	font-size: 16px; 
+	text-align: center;
+}
 
-	<jsp:include page="footer.jsp"/>	
-	
+
+.bg-1 {
+	background-color: #1abc9c;
+	color: #ffffff;
+}
+.bg-2 {
+	background-color: #474e5d;
+	color: #ffffff;
+}
+.bg-3 {
+	background-color: #ffffff;
+	color: #555555;
+}
+.container-padding {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+</style>
+<body>
+<jsp:include page="header.jsp"/>
+<div class="container-fluid bg-1 text-center container-padding">
+	<h3>What we offer?</h3>
+	<img src="<c:url value='/images/we.jpg' />" class="img-circle" alt="WE" style="width:300px; height:280px" >
+	<h3>We deliver Fresh to you!</h3>
+</div>
+
+<div class="container-fluid bg-2 text-center container-padding">
+	<h3>Vision and Mission</h3>
+	<p>We aimed at providing fresh fruit online ordering and delivering service. "FreshToday" means all fruits
+	delivered are absolutely fresh and yummy! We are customer orientated company and we focused on every details of the
+	services provided. We know you have many choices to choose from. Thanks for choosing us and we will do our best!
+	</p>
+</div>
+
+<div class="container-fluid bg-3 text-center container-padding">
+	<h3>Ready to taste fresh?</h3>
+	<a href="/FreshToday/purchase" class="btn btn-primary btn-lg">START PURCHASE</a>
+</div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

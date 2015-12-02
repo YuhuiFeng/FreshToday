@@ -5,14 +5,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Header of homepage</title>
-<link rel="stylesheet" href="<c:url value='/css/mystyle.css' />" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
+<style>
+.navbar {
+	padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+</style>
 <body>
-	<ul class="header" id="menu">
-		<li><a href="/FreshToday/">HOME PAGE</a></li>
-		<li><a href="/FreshToday/AboutUs"> ABOUT US</a></li>
-		<li><a class="a" href="/FreshToday/purchase">PURCHASE</a></li> 
-	</ul>
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                      
+      </button>
+      <a class="navbar-brand" href="/FreshToday/">FreshToday</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/FreshToday/purchase">PURCHARSE</a></li>
+        <li><a href="/FreshToday/AboutUs">ABOUT US</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 </body>
 </html>

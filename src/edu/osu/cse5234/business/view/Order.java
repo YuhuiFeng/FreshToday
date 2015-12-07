@@ -43,6 +43,17 @@ public class Order {
 	@Column(name="CUSTOMER_EMAIL")
 	private String emailAddress;
 	
+	@Column(name="STATUS")
+	private String status;
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;
@@ -82,6 +93,7 @@ public class Order {
 		items = new ArrayList<>();
 		paymentInfo = new PaymentInfo();
 		shippingInfo = new ShippingInfo();
+		status = "New";
 	}
 
 	public List<LineItem> getOrder() {

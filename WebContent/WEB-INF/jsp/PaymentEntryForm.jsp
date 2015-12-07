@@ -65,7 +65,7 @@ body {
 	</div>
 	
 	<div class="form-group">
-		<label class="control-label col-sm-2" for="cvvCode">Expiration date:</label>
+		<label class="control-label col-sm-2" for="cvvCode">CVV Code:</label>
 		<div class="col-sm-10">
 			<form:input path = "cvvCode" class="form-control" id="cvvCode" placeholder="Enter card CVV code"/>
 		</div>			
